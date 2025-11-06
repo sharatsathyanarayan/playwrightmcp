@@ -1,5 +1,8 @@
 # PlayWrightMCP — README
 
+[![Playwright Allure CI](https://github.com/sharatsathyanarayan/playwrightmcp/actions/workflows/playwright-allure.yml/badge.svg)](https://github.com/sharatsathyanarayan/playwrightmcp/actions/workflows/playwright-allure.yml)
+[![Playwright CI](https://github.com/sharatsathyanarayan/playwrightmcp/actions/workflows/playwright.yml/badge.svg)](https://github.com/sharatsathyanarayan/playwrightmcp/actions/workflows/playwright.yml)
+
 This repository contains Playwright tests (JavaScript) and Page Object Model classes for the Sauce Demo site, plus Allure reporting configuration and scripts.
 
 ## Web test context (from `testcontext/webtestcontext.txt`)
