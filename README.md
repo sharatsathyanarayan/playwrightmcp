@@ -5,8 +5,13 @@
 
 This repository contains Playwright tests (JavaScript) and Page Object Model classes for the Sauce Demo site, plus Allure reporting configuration and scripts.
 
+> Note about fonts: GitHub renders README.md with GitHub's default fonts and sanitizes inline styles — it's not possible to reliably embed custom web fonts. This README focuses on clean structure, readable headings and code blocks which display well across viewers.
+
 ## Web test context (from `testcontext/webtestcontext.txt`)
 
+The original instruction/context provided to the test generator is shown below (preserved line breaks):
+
+```
 you are a playwright test generator using javascript
 you are given a scenario and you need to generate playwright test for it
 DO NOT generate code on scenario alone
@@ -14,14 +19,15 @@ Do run every step one by one using the tools provided by playwright MCP
 Only after all steps are completed emit the playwright javascript that uses @playwright/test based on message history
 save the generated test file under tests directory
 execute the test file and iterate until all the tests passes
+```
 
 ## User prompts / important requests (history)
 
 1. Generate the Playwright test using JavaScript for the following scenario:
-   - Use Page Object Model and generate separate classes
-   - Navigate to `https://www.saucedemo.com/` using username `standard_user` and password `secret_sauce`
-   - Add to cart all items on the page and keep and note of all the titles added
-   - Go to cart page `https://www.saucedemo.com/cart.html` and verify the same products and number of products have been added
+  - Use Page Object Model and generate separate classes
+  - Navigate to `https://www.saucedemo.com/` using username `standard_user` and password `secret_sauce`
+  - Add to cart all items on the page and keep and note of all the titles added
+  - Go to cart page `https://www.saucedemo.com/cart.html` and verify the same products and number of products have been added
 
 2. Add Allure report package and generate Allure report (install, configure, generate, open)
 
@@ -50,6 +56,16 @@ execute the test file and iterate until all the tests passes
     - `allure:generate` — generate Allure HTML report from `allure-results` to `allure-report`.
     - `allure:open` — open the generated Allure report.
     - `test:allure` — run tests and then generate the Allure report in one command.
+
+    ### Files of interest
+
+    - `src/pages/LoginPage.js` — POM for login page
+    - `src/pages/InventoryPage.js` — POM for inventory operations
+    - `src/pages/CartPage.js` — POM for cart operations
+    - `tests/saucedemo.spec.js` — main test exercising the scenario
+    - `playwright.config.js` — Playwright configuration (reporters, projects)
+    - `package.json` — scripts and devDependencies (includes allure packages)
+    - `README.md` — this document
 
 ## Commands I ran here (for reproducibility)
 
