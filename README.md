@@ -104,6 +104,31 @@ npm run test:allure
 - Raw Allure result files: `./allure-results`
 - Generated Allure HTML report: `./allure-report`
 
+## Examples
+
+- Run the test suite locally:
+
+```bash
+npm ci
+npx playwright install --with-deps
+npm run test
+```
+
+- Generate and open the Allure report:
+
+```bash
+npm run test:allure
+npm run allure:open
+```
+
+- Preview custom fonts locally (this won't change GitHub's README font):
+
+Open `docs/preview.html` in your browser (double-click or run `open docs/preview.html` on macOS).
+
+## Contributing
+
+See `CONTRIBUTING.md` for guidelines on creating PRs, running tests and generating reports.
+
 ## Notes, warnings, and fixes
 
 - While generating the report earlier, there were JSON schema warnings about an `uuid` field. To address that I upgraded `allure-commandline` to the latest version and regenerated the report. After upgrade the CLI generated the report without those warnings.
