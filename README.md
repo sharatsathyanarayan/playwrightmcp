@@ -7,31 +7,48 @@ This repository contains Playwright tests (JavaScript) and Page Object Model cla
 
 > Note about fonts: GitHub renders README.md with GitHub's default fonts and sanitizes inline styles — it's not possible to reliably embed custom web fonts. This README focuses on clean structure, readable headings and code blocks which display well across viewers.
 
-## Web test context (from `testcontext/webtestcontext.txt`)
+## Web test context (canonical)
 
-The original instruction/context provided to the test generator is shown below (preserved line breaks):
+You are a Playwright test generator that writes JavaScript tests using `@playwright/test`.
 
-```
-you are a playwright test generator using javascript
-you are given a scenario and you need to generate playwright test for it
-DO NOT generate code on scenario alone
-Do run every step one by one using the tools provided by playwright MCP
-Only after all steps are completed emit the playwright javascript that uses @playwright/test based on message history
-save the generated test file under tests directory
-execute the test file and iterate until all the tests passes
-```
+Guidelines:
+- You will be given a scenario and must generate a Playwright test implementing it.
+- Do not produce code from the scenario alone. Instead, run every step one-by-one using the Playwright MCP tools and capture the message history of actions taken.
+- Only after all steps are completed, emit the final Playwright JavaScript test file that uses `@playwright/test`.
+- Save generated test files under the `tests/` directory.
+- Execute the generated test(s) and iterate until all tests pass.
 
-## User prompts / important requests (history)
+## Scenario & deliverables (clear checklist)
 
-1. Generate the Playwright test using JavaScript for the following scenario:
-  - Use Page Object Model and generate separate classes
-  - Navigate to `https://www.saucedemo.com/` using username `standard_user` and password `secret_sauce`
-  - Add to cart all items on the page and keep and note of all the titles added
-  - Go to cart page `https://www.saucedemo.com/cart.html` and verify the same products and number of products have been added
+Task: create an end-to-end Playwright test (JavaScript) for Sauce Demo and set up reporting.
 
-2. Add Allure report package and generate Allure report (install, configure, generate, open)
-
-3. Add a README.md file with webtestcontext and the prompts and all the changes.
+Requirements:
+1. Page Object Model
+  - Create separate page classes/files (for example: `LoginPage`, `InventoryPage`, `CartPage`).
+2. Login
+  - Navigate to: `https://www.saucedemo.com/`
+  - Username: `standard_user`
+  - Password: `secret_sauce`
+3. Inventory actions
+  - Add every item on the inventory page to the cart.
+  - Record the title of each product added.
+4. Cart verification
+  - Navigate to: `https://www.saucedemo.com/cart.html`
+  - Verify the number of items matches what was added.
+  - Verify the cart contains the same product titles (order-insensitive comparison allowed).
+5. Reporting
+  - Install and configure Allure reporting (e.g., `allure-playwright`).
+  - Ensure running tests produces `allure-results/`.
+  - Provide commands or npm scripts to generate and open the HTML Allure report.
+6. Deliverables
+  - Page object files under `src/pages/` (or a similar structure).
+  - Playwright test file under `tests/`.
+  - `playwright.config.js` updated to include the Allure reporter.
+  - `package.json` scripts for running tests and generating/opening the Allure report (for example: `test`, `test:allure`, `allure:open`).
+  - Update `README.md` documenting the web test context, the scenario, run commands, and how to generate/open the Allure report.
+7. Validation
+  - Run the tests locally and iterate until they pass.
+  - Commit code and include brief notes in the README describing validation and report generation.
 
 ## What I added / changed
 
