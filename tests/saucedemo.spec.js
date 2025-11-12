@@ -23,12 +23,12 @@ test('add all items to cart and verify cart contents', async ({ page }) => {
     await inventory.gotoCart();
 
     const cart = new CartPage(page);
-    const cartTitles = await cart.getCartItemTitles();
 
-    // verify the number of products matches
-    expect(cartTitles.length).toBe(addedTitles.length);
+    // Use Playwright async matcher to verify count
+    await expect(cart.items).toHaveCount(addedTitles.length);
 
     // verify same set of titles (order may differ) by sorting both arrays
+    const cartTitles = await cart.getCartItemTitles();
     const sortedAdded = [...addedTitles].sort();
     const sortedCart = [...cartTitles].sort();
     expect(sortedCart).toEqual(sortedAdded);
