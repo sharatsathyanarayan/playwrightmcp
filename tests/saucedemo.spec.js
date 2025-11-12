@@ -27,9 +27,10 @@ test('add all items to cart and verify cart contents', async ({ page }) => {
     // Use Playwright async matcher to verify count
     await expect(cart.items).toHaveCount(addedTitles.length);
 
-    // verify same set of titles (order may differ) by sorting both arrays
-    const cartTitles = await cart.getCartItemTitles();
+    // verify same set of titles (order may differ) using Playwright's polling to allow retries
     const sortedAdded = [...addedTitles].sort();
-    const sortedCart = [...cartTitles].sort();
-    expect(sortedCart).toEqual(sortedAdded);
+    await expect.poll(async () => {
+        const cartTitles = await cart.getCartItemTitles();
+        return [...cartTitles].sort();
+    }, { timeout: 5000 }).toEqual(sortedAdded);
 });
